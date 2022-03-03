@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rowdies&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"
+  />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+
+    <title>redberry form</title>
+</head>
+<body>
+    <div class="mainContainer row-flex">
+        <form class="left-side column-flex" action="?">
+            <h2 class="form-header"> Hey, Rocketeer, what <br> are your coordinates? </h2>
+
+            <input class="default-input" type="text" name="first_name" 
+                id="first_name" placeholder="First Name" minlength="2" required> 
+
+            <input class="default-input" type="text" name="last_name" 
+                id="last_name" placeholder="Last Name" minlength="2" required> 
+
+            <input class="default-input" type="email" name="email" 
+                id="email" placeholder="E Mail" required> 
+
+            <input class="default-input" type="tel" name="phone" 
+            id="phone" placeholder="+995 5__ __ __ __" pattern="[5]{1}[0-9]{2}[0-9]{6}"> 
+            <input type="submit">
+        </form>
+        <article class="right-side column-flex">
+            <h2 class="form-header"> Hey, Rocketeer, what <br> are your coordinates? </h2>
+            <p class="description">You watch “What? Where? When?” Yeah. Our founders used to play it. That’s where 
+                they got a question about a famous American author and screenwriter Ray Bradbury. 
+                Albeit, our CEO Gaga Darsalia forgot the exact name and he answered Ray Redberry. 
+                And at that moment, a name for a yet to be born company was inspired - Redberry 😇</p>
+        </article>
+    <script src="script.js"></script>
+    </div>
+</body>
+</html>
