@@ -16,30 +16,92 @@
 </head>
 <body>
     <div class="mainContainer row-flex">
-        <form class="left-side column-flex" action="?">
-            <h2 class="form-header"> Hey, Rocketeer, what <br> are your coordinates? </h2>
+        <div class="left-side column-flex">
+            <form action="?">
+                <div class="form-group column-flex active">
+                    <h2 class="form-header"> Hey, Rocketeer, what <br> are your coordinates? </h2>
 
-            <input class="default-input" type="text" name="first_name" 
-                id="first_name" placeholder="First Name" minlength="2" required> 
+                    <input class="default-input" type="text" name="first_name" 
+                        id="first_name" placeholder="First Name" minlength="2" required> 
 
-            <input class="default-input" type="text" name="last_name" 
-                id="last_name" placeholder="Last Name" minlength="2" required> 
+                    <input class="default-input" type="text" name="last_name" 
+                        id="last_name" placeholder="Last Name" minlength="2" required> 
 
-            <input class="default-input" type="email" name="email" 
-                id="email" placeholder="E Mail" required> 
+                    <input class="default-input" type="email" name="email" 
+                        id="email" placeholder="E Mail" required> 
 
-            <input class="default-input" type="tel" name="phone" 
-            id="phone" placeholder="+995 5__ __ __ __" pattern="[5]{1}[0-9]{2}[0-9]{6}"> 
-            <input type="submit">
-        </form>
-        <article class="right-side column-flex">
+                    <input class="default-input" type="tel" name="phone" 
+                    id="phone" placeholder="+995 5__ __ __ __" pattern="[+9955]{5}[0-9]{2}[0-9]{6}"> 
+                    <input type="submit">
+                </div>
+
+                <div class="form-group column-flex">
+                    <h2 class="form-header"> Tell us about your skills </h2>
+
+                    <select name="skills" id="skills" class="default-input">
+                        
+                    </select>
+                </div>
+
+                <div class="form-group column-flex">
+                    <h2 class="form-header"> Covid Stuff </h2>
+
+                    <select name="cars" id="cars" class="default-input">
+
+                    </select>
+                </div>
+                <div class="form-group column-flex">
+                    <h2 class="form-header"> What about you? </h2>
+
+                    <select name="cars" id="cars" class="default-input">
+
+                    </select>
+                </div>
+            </form>
+            <div class="buttons row-flex">
+                <div class="change-step" id="prev-btn"><img src="images/Previous.png" alt="previous"></div>
+                <span class="bullet"></span>
+                <span class="bullet"></span>
+                <span class="bullet"></span>
+                <span class="bullet"></span>
+                <!-- <span class="bullet"></span> -->
+                <div class="change-step" id="next-btn"><img src="images/Next.png" alt="next"></div>
+            </div>
+        </div>
+        
+        <article class="right-side column-flex about-redberry active firsts">
             <h2 class="form-header"> Hey, Rocketeer, what <br> are your coordinates? </h2>
             <p class="description">You watch “What? Where? When?” Yeah. Our founders used to play it. That’s where 
                 they got a question about a famous American author and screenwriter Ray Bradbury. 
                 Albeit, our CEO Gaga Darsalia forgot the exact name and he answered Ray Redberry. 
                 And at that moment, a name for a yet to be born company was inspired - Redberry 😇</p>
         </article>
-    <script src="script.js"></script>
+        <article class="right-side column-flex about-redberry">
+            <h2 class="form-header"> A bit about our battles </h2>
+            <p class="description">As we said, Redberry has been on the field for quite some time now, and we 
+                have touched and embraced a variety of programming languages, technologies, philosophies, and 
+                frameworks. We are battle-tested in PHP Laravel Stack with Vue.js, refined in React, and allies 
+                with Serverside technologies like Docker and Kubernetes, and now we have set foot in the web3 
+                industry.</p>
+        </article>
+        <article class="right-side column-flex about-redberry">
+            <h2 class="form-header"> Redberry Covid Policies</h2>
+            <p class="description">As this infamous pandemic took over the world, we adjusted our working practices 
+                so that our employees can be as safe and comfortable as possible. We have a hybrid work environment, 
+                so you can either work from home or visit our lovely office on Sairme Street. If it was up to us, we 
+                would love you to see us in the office because we think face-to-face communications > Zoom meetings. 
+                Both on the fun and productivity scales. </p>
+        </article>
+        <article class="right-side column-flex about-redberry">
+            <h2 class="form-header"> Redberrian Insights</h2>
+            <p class="description">We were soo much fun before the pandemic started! Parties almost every weekend and 
+                lavish employee birthday celebrations! Unfortunately, covid ruined that fun like it did almost 
+                everything else in the world. But we try our best to zhuzh it up a bit. For example, we host biweekly 
+                Devtalks where our senior and lead developers talk about topics they are passionate about. Previous 
+                topics have included Web3, NFT, Laravel 9, Kubernetes, etc. We hold these talks in the office but you 
+                can join our Zoom broadcast as well. Feel free to join either as an attendee or a speaker! </p>
+        </article>
+    <script src="app.js"></script>
     </div>
 </body>
 </html>
