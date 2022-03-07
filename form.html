@@ -35,27 +35,88 @@
                     <input type="submit">
                 </div>
 
-                <div class="form-group column-flex">
+                <div class="form-group column-flex skills-form">
                     <h2 class="form-header"> Tell us about your skills </h2>
-
                     <select name="skills" id="skills" class="default-input">
-                        
+                        <option value="" disabled selected hidden>skills</option>  
                     </select>
+                    <input class="default-input" id="experience-years" type="number" name="last_name" 
+                    id="last_name" placeholder="Experience Duration in Years" minlength="1" required> 
+                    <div class="for-language-btn">
+                    <button class="add-language-btn">Add Programming Language</button>
+                    </div>
+                    <div class="added-language"></div>
                 </div>
 
-                <div class="form-group column-flex">
-                    <h2 class="form-header"> Covid Stuff </h2>
+                <div class="form-group column-flex covid-page">
+                    <h2 class="form-header"> Covid Stuff </h2>                   
+                    <div class="covid-format">
+                        <h4 class="radio-quetion">how would you prefer to work?</h4>
+                        <div class="radio">
+                            <input type="radio" id="from_Office" name="working_place" value="office">
+                            <label for="office">From Sairme Office</label>
+                        </div>
+                        <div class="radio">
+                            <input type="radio" id="from_home" name="working_place" value="home">
+                            <label for="home">From Home</label>
+                        </div>
+                        <div class="radio">
+                            <input type="radio" id="hybrid" name="working_place" value="hybrid">
+                            <label for="hybrid">Hybrid</label>
+                        </div>
 
-                    <select name="cars" id="cars" class="default-input">
+                        <h4 class="radio-quetion contact-header">Did you contact covid 19? :(</h4>
+                        <div class="radio">
+                            <input type="radio" id="yes" name="had-contact?" value="yes">
+                            <label for="yes">Yes</label>
+                        </div>
+                        <div class="radio">
+                            <input type="radio" id="no" name="had-contact?" value="no">
+                            <label for="no">No</label>
+                        </div>
 
-                    </select>
+                        <h4 class="radio-quetion when-header">When?</h4>
+                        <div class="radio">
+                            <input type="date" id="contact-date" name="contact-date" placeholder="date">
+                        </div>
+
+                        <h4 class="radio-quetion been-vaccinated-header">Have you been vaccinated?</h4>
+                        <div class="radio">
+                            <input type="radio" id="vaccinated" name="vaccinated" value="vaccinated">
+                            <label for="vaccinated">Yes</label>
+                        </div>
+                        <div class="radio">
+                            <input type="radio" id="not-vaccinated" name="not-vaccinated" value="not-vaccinated">
+                            <label for="not-vaccinated">No</label>
+                        </div>
+                        
+                        <h4 class="radio-quetion when-vaccinated-header">When did you get your last covid vaccine?</h4>
+                        <div class="radio">
+                            <input type="date" id="vaccinate-date" name="vaccinate-date" placeholder="date">
+                        </div>
+                    </div>
+
                 </div>
                 <div class="form-group column-flex">
                     <h2 class="form-header"> What about you? </h2>
+                    <div class="insights-format">
 
-                    <select name="cars" id="cars" class="default-input">
+                        <h4 class="radio-quetion devtalks-header">Would you attend Devtalks and maybe also organize your own?</h4>
+                        <div class="radio">
+                            <input type="radio" id="devtalks" name="devtalks?" value="yes">
+                            <label for="yes">Yes</label>
+                        </div>
+                        <div class="radio">
+                            <input type="radio" id="no-devtalks" name="devtalks?" value="no">
+                            <label for="no">No</label>
+                        </div>
 
-                    </select>
+                        <h4 class="radio-quetion topic-header">What would you speak about at Devtalk?</h4>
+                        <input type="textarea" class="topic-text" name="devtalk_topic" placeholder="I would ...">
+
+                        <h4 class="radio-quetion special-header">Tell us something special</h4>
+                        <input type="textarea" class="something_special" name="something_special-" placeholder="I ...">
+                    </div>
                 </div>
             </form>
             <div class="buttons row-flex">

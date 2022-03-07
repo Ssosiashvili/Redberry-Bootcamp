@@ -79,6 +79,9 @@ h1{
     align-items: center;
     display: none;
 }
+/* .form-group.covid-page{
+    align-items: stretch;
+} */
 .form-group.active,.about-redberry.active {
     display: flex;
 }
@@ -106,7 +109,9 @@ h1{
     padding-left: 57px;
     margin-bottom: 37px;
 }
-
+.for-language-btn {
+    width: 455px;
+}
 .buttons {
     width: 231px;
     height: 19px;
@@ -137,4 +142,83 @@ h1{
     width: 705px;
     line-height: 48px;
     letter-spacing: 5px;
+}
+.add-language-btn {
+    width: 201px;
+    height: 32px;
+    border:none;
+    background-color: #FE3B1F;
+    float: right;
+    color: #FFFFFF;
+}
+/* .added-language > div{
+    border: 1px solid #525557;
+    width: 447px;
+    height: 48px;
+    font-family: 'Montserrat', sans-serif;
+    font-style: italic;
+    font-size:15px;
+} */
+/* .covid-page{
+    align-items: stretch;
+} */
+.covid-format, .insights-format{
+    font-family: 'Montserrat', sans-serif;
+    color: #000000;
+}
+.radio-quetion {
+    width: 535px;
+    height: 42px;
+    font-size: 18px;
+    margin-bottom: 8px;
+    margin: auto 0px;
+}
+.radio {
+    margin-bottom: 17px;
+}
+.contact-header{
+    margin-top:51px;
+}
+input[type="date"] {
+    overflow: hidden;
+    padding: 0;
+    width: 455px;
+    height: 52px;
+    padding-right: 20px;    
+}
+::-webkit-calendar-picker-indicator {
+    background-image: url('images/calendar.svg')
+}
+.when-header {
+    margin-top: 43px;
+}
+.been-vaccinated-header{
+    margin-top: 71px;
+}
+.when-vaccinated-header {
+    margin-top: 43px;
+}
+.devtalks-header {
+    width: 595px;
+    margin-top: 48px;
+}
+.topic-header{
+margin-top: 45px;
+}
+.topic-text {
+    font-family: 'Montserrat', sans-serif;
+    width: 545px;
+    height: 122px;
+    padding-left:24px;
+    border: 1px solid #525557;
+}
+.special-header {
+    margin-top: 53px;
+}
+.something_special {
+    font-family: 'Montserrat', sans-serif;
+    width: 545px;
+    height: 89px;
+    padding-left:24px;
+    border: 1px solid #525557;
 }

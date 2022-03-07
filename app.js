@@ -53,17 +53,50 @@ function getRequest() {
   }).then(function(r) {
     console.log(r);
     skills=r;
-    console.log(...skills)
+    console.log(skills)
     renderData(r)
   })
 };
 getRequest();
+let optionsArr = [];
+let list;
 function renderData(data) {
   let options = document.querySelector('#skills')
   for(let i = 0; i < data.length; i++) {
-    let list = document.createElement('option');
+    list = document.createElement('option');
+    
     list.innerHTML = `${data[i].title}`;
     options.appendChild(list);
-     console.log(list.innerHTML)
+    list.classList.add('selected')
+    document.querySelectorAll(".selected")[i].addEventListener("click", function() {
+      console.log('yep')
+    })
+    console.log(list);
+    optionsArr.push(`${data[i].title}`);
   };
+
+  console.log(optionsArr)
+  return list;
 };
+console.log(optionsArr)
+console.log(list)
+
+let displayLanguage = function () {
+  prevent().default 
+  let selectElement = document.querySelector('#skills');
+  let output = selectElement.value;
+  let experience = document.querySelector('#experience-years').value
+  let language = document.createElement('div');
+  language.value = output;
+  language.id = output;
+  language.className = 'added';
+  language.innerHTML = `
+  <div id ="${output}" class="language">${output}</div>
+  <div id ="expreience-text">Years of Experience: </div>
+  <div class ="experience-years">${experience}</div>
+  <img src="images/remove.png" alt="remove-btn">
+  `;
+  document.querySelector(".added-language").appendChild(language);
+  console.log(language)
+}
+document.querySelector(".add-language-btn").addEventListener("click", displayLanguage)
