@@ -11,9 +11,8 @@
 }
 .mainContainer{
     width: 100%;
-    height: 100vh;
     max-width: 1920px;
-    max-height: 1080px;
+    min-height: 100vh;
 
 }
 .landing {
@@ -72,7 +71,7 @@ h1{
 
 .left-side {
     width: 50%;
-    height: 100%;   
+    /* height: 100%;    */
     align-items: center;
 }
 .form-group,.about-redberry{
@@ -87,7 +86,6 @@ h1{
 }
 .right-side {
     width: 50%;
-    height: 100%;
     align-items: center;
     background-color: #0C0D0E;
     ;
@@ -151,17 +149,7 @@ h1{
     float: right;
     color: #FFFFFF;
 }
-/* .added-language > div{
-    border: 1px solid #525557;
-    width: 447px;
-    height: 48px;
-    font-family: 'Montserrat', sans-serif;
-    font-style: italic;
-    font-size:15px;
-} */
-/* .covid-page{
-    align-items: stretch;
-} */
+
 .covid-format, .insights-format{
     font-family: 'Montserrat', sans-serif;
     color: #000000;
@@ -221,4 +209,31 @@ margin-top: 45px;
     height: 89px;
     padding-left:24px;
     border: 1px solid #525557;
+}
+.hidden {
+    display: none;
+}
+.full-screen {
+    width: 100%;
+    background-color: #0C0D0E;
+}
+.submit-btn{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 36px;
+    color: #FFFFFF;
+    width: 395px;
+    height: 79px;
+    border-radius: 50px;
+    display: block;
+    background-color: #FE3B1F;
+    margin: auto;
+    margin-top:458px;
+    border:none;
+    margin-bottom: 30px;
+}
+#go-back {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 28px;
+    color: #FFFFFF;
+    text-decoration: underline;
 }

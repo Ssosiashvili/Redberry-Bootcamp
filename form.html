@@ -22,7 +22,7 @@
                     <h2 class="form-header"> Hey, Rocketeer, what <br> are your coordinates? </h2>
 
                     <input class="default-input" type="text" name="first_name" 
-                        id="first_name" placeholder="First Name" minlength="2" required> 
+                        id="first_name" placeholder="First Name" minlength="2" required oninput="setFieldInfo();"> 
 
                     <input class="default-input" type="text" name="last_name" 
                         id="last_name" placeholder="Last Name" minlength="2" required> 
@@ -86,7 +86,7 @@
                             <label for="vaccinated">Yes</label>
                         </div>
                         <div class="radio">
-                            <input type="radio" id="not-vaccinated" name="not-vaccinated" value="not-vaccinated">
+                            <input type="radio" id="not-vaccinated" name="vaccinated" value="not-vaccinated">
                             <label for="not-vaccinated">No</label>
                         </div>
                         
@@ -103,12 +103,12 @@
 
                         <h4 class="radio-quetion devtalks-header">Would you attend Devtalks and maybe also organize your own?</h4>
                         <div class="radio">
-                            <input type="radio" id="devtalks" name="devtalks?" value="yes">
-                            <label for="yes">Yes</label>
+                            <input type="radio" id="devtalks" name="devtalks?" value="yes-devtalks">
+                            <label for="yes-devtalks">Yes</label>
                         </div>
                         <div class="radio">
-                            <input type="radio" id="no-devtalks" name="devtalks?" value="no">
-                            <label for="no">No</label>
+                            <input type="radio" id="no-devtalks" name="devtalks?" value="no-devtalks">
+                            <label for="no-devtalks">No</label>
                         </div>
 
                         <h4 class="radio-quetion topic-header">What would you speak about at Devtalk?</h4>
@@ -118,6 +118,10 @@
                         <input type="textarea" class="something_special" name="something_special-" placeholder="I ...">
                     </div>
                 </div>
+                <div class="form-group column-flex submit-page">
+                    <input type="submit" class="submit-btn">
+                    <div id="go-back">go back</div>
+                </div>
             </form>
             <div class="buttons row-flex">
                 <div class="change-step" id="prev-btn"><img src="images/Previous.png" alt="previous"></div>
@@ -125,12 +129,12 @@
                 <span class="bullet"></span>
                 <span class="bullet"></span>
                 <span class="bullet"></span>
-                <!-- <span class="bullet"></span> -->
+                <span class="bullet"></span>
                 <div class="change-step" id="next-btn"><img src="images/Next.png" alt="next"></div>
             </div>
         </div>
         
-        <article class="right-side column-flex about-redberry active firsts">
+        <article class="right-side column-flex about-redberry active">
             <h2 class="form-header"> Hey, Rocketeer, what <br> are your coordinates? </h2>
             <p class="description">You watch “What? Where? When?” Yeah. Our founders used to play it. That’s where 
                 they got a question about a famous American author and screenwriter Ray Bradbury. 
@@ -161,6 +165,8 @@
                 Devtalks where our senior and lead developers talk about topics they are passionate about. Previous 
                 topics have included Web3, NFT, Laravel 9, Kubernetes, etc. We hold these talks in the office but you 
                 can join our Zoom broadcast as well. Feel free to join either as an attendee or a speaker! </p>
+        </article>
+        <article class="right-side column-flex about-redberry">
         </article>
     <script src="app.js"></script>
     </div>
