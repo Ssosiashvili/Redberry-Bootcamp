@@ -3,7 +3,12 @@
 const TOKEN = '0f15932a-e354-4c54-bf22-a716438f519d'
 var SKILLS = {}
 
-const info = {token: TOKEN, skills: []};
+const info = {token: TOKEN, skills: [
+  {
+    "id": 1,
+    "experience": 3
+  }
+]};
 
 function setFieldInfo(e) {
   info[e.name] = e.value
@@ -38,13 +43,22 @@ function localStorageSetter(keyName, value) {
   localStorage.setItem(keyName, JSON.stringify(value))
 }
 
-nextBtn.addEventListener('click', showNextPage);
+//nextBtn.addEventListener('click', showNextPage);
 prevBtn.addEventListener('click', showPrevPage);
 goBackBtn.addEventListener('click', backFromLast);
+
+for(let i = 0; i < bullets.length; i++) {
+  bullets[i].addEventListener('click', function() {
+    switchTo(i);
+  });
+}
 
 function renderPages(){
   formPages.forEach((page, i) => {
     activeIndex === i ? page.classList.add('active') : page.classList.remove('active');
+  })
+  bullets.forEach((page, i) => {
+    activeIndex === i ? page.classList.add('current') : page.classList.remove('current');
   })
    redberryPages.forEach((page, i) => {
      if(activeIndex!== redberryPages.length-1) {
@@ -64,6 +78,10 @@ function showPrevPage(){
   (activeIndex === 0) ? activeIndex = formPages.length - 1 : activeIndex--;
   renderPages();
 }
+function switchTo(newIndex) {
+  activeIndex = newIndex;
+  renderPages();
+}
 
 function backFromLast() {
   activeIndex = formPages.length - 2;
@@ -80,7 +98,7 @@ function showLastPage(page) {
   document.querySelector(".buttons").classList.add('hidden')
 }
 
-nextBtn.addEventListener("click", nextStep)
+nextBtn.addEventListener("click", nextStepChekValidity)
 
 function nextStep() {
   var input = document.getElementById("phone");
@@ -88,6 +106,25 @@ function nextStep() {
     console.log("Bad input detected…");
   } else {
     console.log("Content of input OK.");
+  }
+}
+
+function nextStepChekValidity() {
+  let input = document.querySelectorAll(".for-test");
+  for (let i=0; i< input.length; i++) {
+    console.log(input[i].value)
+    if(input[i].value =="") {
+      input[i].nextElementSibling.innerHTML = "this field is required";
+      console.log("this field is required")
+    }else if(input[i].validity.tooShort) {
+      input[i].nextElementSibling.innerHTML = "at least 2 symbols"
+      console.log("at least 2 symbols");
+    }else if(input[i].validity.typeMismatch) {
+      input[i].nextElementSibling.innerHTML = "input email adress"
+      console.log("at least 2 symbols");
+    } else if(input[i].validity.patternMismatch) {
+      input[i].nextElementSibling.innerHTML = "use correct pattern"
+    }
   }
 }
 
@@ -103,6 +140,7 @@ function getRequest() {
     renderData(r)
   })
 };
+
 getRequest();
 let optionsArr = [];
 let submittedNames = []
@@ -138,18 +176,19 @@ let displayLanguage = function (event) {
   let language = document.createElement('div');
   language.value = output;
   language.id = output;
-  language.className = 'added';
+  language.className = 'added-language';
   language.innerHTML = `
   <div class="language">${output}</div>
-  <div id ="expreience-text">Years of Experience: </div>
+  <div class ="experience-text">Years of Experience: </div>
   <div class ="experience-years">${experience}</div>
-  <img id =${output}-btn onclick="removeSelected(this)" src="images/remove.png" alt="remove-btn">
+  <img id =${output}-btn onclick="removeSelected(this);removeParent(this);"src="images/remove.png" alt="remove-btn">
   `;
-  document.querySelector(".added-language").appendChild(language);
+  document.querySelector(".skills-form").appendChild(language);
   let selected = document.querySelectorAll(".selected") 
   selected.forEach((item => {
+    console.log(item);
     if(item.value===output) {
-      item.hidden= true
+      item.hidden = true;
     }
 
   }))
@@ -157,18 +196,146 @@ let displayLanguage = function (event) {
   console.dir (selected)
   console.log("LANGUAGE", language)
 }
+
 document.querySelector(".add-language-btn").addEventListener("click", displayLanguage)
 
 function removeSelected (e) {
-console.dir(e)
-const selectedLanguage = e.id.substring(0,e.id.length-4)
-console.log(selectedLanguage);
-let languageBack = document.querySelectorAll(".selected")
+  console.dir(e)
+  const selectedLanguage = e.id.substring(0,e.id.length-4)
+  console.log(selectedLanguage);
+  let languageBack = document.querySelectorAll(".selected")
 
-languageBack.forEach((i) =>{
-  console.log(selectedLanguage, i.value)
-  if(selectedLanguage===i.value) {
-    i.hidden= false;
+  for (let i = 0; i < languageBack.length; i++) {
+    if(selectedLanguage===languageBack[i].value) {
+      languageBack[i].hidden= false;
+    }
   }
-})
+};
+
+function removeParent(e) {
+  e.parentElement.remove();
 }
+
+document.querySelector('form').addEventListener('submit', function(e) {
+  fetch('https://bootcamp-2022.devtest.ge/api/application', {
+  method: "POST",
+  headers: {'Content-Type': 'application/json'}, 
+  body: testdata
+}).then(res => {
+  console.log("Request complete! response:", res);
+  console.log(testdata)
+});
+  e.preventDefault();
+});
+
+
+
+// function sendRequest(data) {
+//   return fetch('https://bootcamp-2022.devtest.ge/api/application', {
+//     method: 'POST',
+//     // headers: {
+//     //    'Content-Type': 'application/x-www-form-urlencoded',
+//     // },
+//     body: data
+//   })
+//  .then(function(r) {
+//    console.log(data)
+//     return r.json();
+//   });
+//}
+
+
+let testdata = {
+  "token": '0f15932a-e354-4c54-bf22-a716438f519d',
+  "first_name": "Soso",
+  "last_name": "sosiashvili",
+  "email": "sosiashvili@gmail.como",
+  "phone": "+995514418181",
+  "skills": [
+    {
+      "id": 1,
+      "experience": 3
+    }
+  ],
+  "work_preference": "from_home",
+  "had_covid": true,
+  "had_covid_at": "2022-02-23",
+  "vaccinated": true,
+  "vaccinated_at": "2022-02-23",
+  "will_organize_devtalk": true,
+  "devtalk_topic": "dont know yet",
+  "something_special": "meh"
+}
+
+
+// fetch('https://bootcamp-2022.devtest.ge/api/application', {
+//   method: "POST",
+//   headers: {'Content-Type': 'application/json'}, 
+//   body: testdata
+// }).then(res => {
+//   console.log("Request complete! response:", res);
+// });
+  //let testdata =
+  // {
+  //   token: '0f15932a-e354-4c54-bf22-a716438f519d',
+  //   first_name: "Soso",
+  //   last_name: "sosiashvili",
+  //   email: "sosiashvili@gmail.como",
+  //   phone: "",
+  //   skills: [
+  //     {
+  //       id: 1,
+  //       experience: 3
+  //     }
+  //   ],
+  //   work_preference": "from_home",
+  //   had_covid: true,
+  //   had_covid_at: "2022-02-23",
+  //   vaccinated": true,
+  //   vaccinated_at: "2022-02-23",
+  //   will_organize_devtalk": true,
+  //   devtalk_topic: "dont know yet",
+  //   something_special: "meh"
+  // }
+  
+  // getRequest1(TOKEN);
+  // function getRequest1() {
+  //   fetch('https://bootcamp-2022.devtest.ge/api/applications').then(function(r) {
+  //     return r.json();
+  //   }).then(function(r) {
+  //     console.log(r);
+
+  //   })
+  // };
+
+function yesnoCheckVaccinated() {
+  if (document.getElementById('vaccinated').checked) {
+    document.getElementById('vaccinate-date').style.display = 'block';
+    document.getElementById('when-vaccinated').style.display = 'block'; 
+  }else{
+  document.getElementById('vaccinate-date').style.display = 'none';
+  document.getElementById('when-vaccinated').style.display = 'none';
+  }
+}
+
+function yesnoCheckCovid() {
+  if (document.getElementById('vaccinated').checked) {
+    document.getElementById('vaccinate-date').style.display = 'block';
+    document.getElementById('when-vaccinated').style.display = 'block'; 
+  }else{
+  document.getElementById('vaccinate-date').style.display = 'none';
+  document.getElementById('when-vaccinated').style.display = 'none';
+  }
+}
+
+function getRequest1() {
+  fetch(`https://bootcamp-2022.devtest.ge/api/applications?token=${TOKEN}`).then(function(r) {
+    return r.json();
+  }).then(function(r) {
+    console.log(r);
+    skills=r;
+    console.log(skills)
+  })
+};
+
+getRequest1();

@@ -105,17 +105,48 @@ h1{
     font-size: 14px;
     font-style: italic;
     padding-left: 57px;
-    margin-bottom: 37px;
+    margin-bottom: 4px;
+    background-color: #FFFFFF;
+}
+.error-span {
+    width: 455px;
+    height: 16px;
+    padding-left: 57px;
+    margin-bottom: 17px;
+    font-family: 'Montserrat', sans-serif;
+    font-style: italic;
+    font-size: 11px;
+    color: #FE3B1F;
+}
+.for-experience-error {
+    margin-bottom: 2px;
+}
+.error-span-radio {
+    width: 455px;
+    height: 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-style: italic;
+    font-size: 11px;
+    color: #FE3B1F;
+}
+select {
+    background-image: url(images/arrow-down.svg);
+    background-repeat: no-repeat;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-position: top 25px right 21px;
 }
 .for-language-btn {
     width: 455px;
+
 }
 .buttons {
     width: 231px;
     height: 19px;
-    margin-top: 175px;
+    margin-top: 85px;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 70px;
 }
 .bullet {
     height: 18px;
@@ -149,7 +180,33 @@ h1{
     float: right;
     color: #FFFFFF;
 }
-
+.added-language {
+    width: 447px;
+    height: 48px;
+    color: #000000;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-style: italic;
+    border: 1px solid #525557;
+    box-sizing: border-box;
+    margin-top: 17px;
+    background-color: #FFFFFF;
+    padding-left: 17px;
+    display: flex;
+    align-items: center;
+}
+.language {
+    width: 50px;
+    margin-right: 35px;
+}
+.experience-text {
+    width: 140px;
+    margin-right: 5px;
+}
+.experience-years {
+    width: 25px;
+    margin-right: 139px;
+}
 .covid-format, .insights-format{
     font-family: 'Montserrat', sans-serif;
     color: #000000;
@@ -165,33 +222,35 @@ h1{
     margin-bottom: 17px;
 }
 .contact-header{
-    margin-top:51px;
+    margin-top:36px;
 }
 input[type="date"] {
     overflow: hidden;
     padding: 0;
     width: 455px;
     height: 52px;
-    padding-right: 20px;    
+    padding-right: 20px;  
+    border: 1px solid #525557;
+    background-color: #FFFFFF;  
 }
 ::-webkit-calendar-picker-indicator {
     background-image: url('images/calendar.svg')
 }
 .when-header {
-    margin-top: 43px;
+    margin-top: 27px;
 }
 .been-vaccinated-header{
-    margin-top: 71px;
+    margin-top: 55px;
 }
 .when-vaccinated-header {
-    margin-top: 43px;
+    margin-top: 27px;
 }
 .devtalks-header {
     width: 595px;
-    margin-top: 48px;
+    margin-top: 32px;
 }
 .topic-header{
-margin-top: 45px;
+margin-top: 29px;
 }
 .topic-text {
     font-family: 'Montserrat', sans-serif;
@@ -199,6 +258,7 @@ margin-top: 45px;
     height: 122px;
     padding-left:24px;
     border: 1px solid #525557;
+    display: block;
 }
 .special-header {
     margin-top: 53px;
@@ -209,6 +269,16 @@ margin-top: 45px;
     height: 89px;
     padding-left:24px;
     border: 1px solid #525557;
+    display: block;
+}
+.personal-info {
+    margin-bottom: 90px;
+}
+.skills-form {
+    margin-bottom: 76px;
+}
+.covid-page {
+    margin-bottom: 57px;
 }
 .hidden {
     display: none;
@@ -236,4 +306,19 @@ margin-top: 45px;
     font-size: 28px;
     color: #FFFFFF;
     text-decoration: underline;
+}
+.current, .finished {
+    opacity: 1;
+}
+
+.btno {
+    width: 100px;
+    height: 50px;
+}
+input:not(:placeholder-shown):invalid {
+    border:1px solid red;
+}
+
+#vaccinate-date, #when-vaccinated {
+    display: none;
 }
