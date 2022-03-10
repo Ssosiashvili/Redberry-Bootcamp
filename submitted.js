@@ -1,5 +1,6 @@
 const form = localStorage.getItem("FORM_INFO")
 
+console.log(form)
 // let languages = {
 //     html = 1,
 //     css = 2,
@@ -113,6 +114,19 @@ function renderSubmittedApplications(){
         </div>
         `;
     }
+     let skillset = document.querySelectorAll('.skillset');
+    for (let i=0; i < data.length; i++ ) {
+        let createdSkillsDiv = document.createElement('div');
+
+    skillset[i]?.appendChild(createdSkillsDiv);
+
+        for(let x = 0; x < data[i].skills.length; x++){
+            console.log("id", data[i].slills)
+             console.log("length",data[i].skills.length)
+            // console.log(data[i].skills[x]?.id,data[i].skills[x]?.experience)
+        }
+    }
+    //<div class="field">${data[i].skills.id}</div> <div class="right-field">years of experience: ${data[i].skills.experience}</div>
     const applicationDiv = document.querySelectorAll(".application");
     applicationDiv[data.length-1].classList.remove('display-none');
     let arrowToShow = document.querySelectorAll(".for-arrow");

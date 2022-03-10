@@ -135,6 +135,7 @@ function renderData(data) {
 
 
 let displayLanguage = function (event) { 
+  event.preventDefault();
   let selectElement = document.querySelector('#skills');
   let output = selectElement.value;
   let experience = document.querySelector('#experience-years').value
@@ -245,7 +246,8 @@ function yesnoCheckdevTalk() {
 }
 
 
-document.querySelector('.sumbitted').addEventListener("click", getRequestApplication);
+
+// document.querySelector('.sumbitted').addEventListener("click", getRequestApplication);
 
 let receivedForm = null;
 function getRequestApplication() {
@@ -257,3 +259,4 @@ function getRequestApplication() {
   })
 };
 
+getRequestApplication();
