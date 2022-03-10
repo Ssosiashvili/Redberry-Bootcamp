@@ -1,20 +1,18 @@
 'use strict';
 
-const TOKEN = '0f15932a-e354-4c54-bf22-a716438f519d'
+const TOKEN = '0b9f51f8-c55d-4391-80c6-9fb22bb5e9aa'
 var SKILLS = {}
 
 const info = {token: TOKEN, skills: [
-  {
-    "id": 1,
-    "experience": 3
-  }
+
 ]};
 
 function setFieldInfo(e) {
+  if(e.value=="true"||e.value=="false") {
+    info[e.name] = JSON.parse(e.value)
+  }else{
   info[e.name] = e.value
-
-  console.log(SKILLS)
-
+  }
   console.log(info)
 }
 
@@ -23,10 +21,10 @@ function setSkillInfo(e) {
 }
 
 const phoneInputField = document.querySelector("#phone");
-// const phoneInput = window.intlTelInput(phoneInputField, {
-//   utilsScript:
-//     "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
-// });
+const phoneInput = window.intlTelInput(phoneInputField, {
+  utilsScript:
+    "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+});
 
 
 const formPages = document.querySelectorAll('.form-group');
@@ -38,14 +36,13 @@ const goBackBtn = document.querySelector('#go-back');
 
 let activeIndex = 0;
 
+nextBtn.addEventListener('click', showNextPage);
+prevBtn.addEventListener('click', showPrevPage);
+goBackBtn.addEventListener('click', backFromLast);
 
 function localStorageSetter(keyName, value) {
   localStorage.setItem(keyName, JSON.stringify(value))
 }
-
-//nextBtn.addEventListener('click', showNextPage);
-prevBtn.addEventListener('click', showPrevPage);
-goBackBtn.addEventListener('click', backFromLast);
 
 for(let i = 0; i < bullets.length; i++) {
   bullets[i].addEventListener('click', function() {
@@ -66,7 +63,7 @@ function renderPages(){
     }else {
       showLastPage(page);
     }
-   })
+  })
 }
 
 function showNextPage(){
@@ -98,16 +95,7 @@ function showLastPage(page) {
   document.querySelector(".buttons").classList.add('hidden')
 }
 
-nextBtn.addEventListener("click", nextStepChekValidity)
-
-function nextStep() {
-  var input = document.getElementById("phone");
-  if (input.validity.patternMismatch) {
-    console.log("Bad input detected…");
-  } else {
-    console.log("Content of input OK.");
-  }
-}
+//nextBtn.addEventListener("click", nextStepChekValidity)
 
 function nextStepChekValidity() {
   let input = document.querySelectorAll(".for-test");
@@ -134,42 +122,25 @@ function getRequest() {
     return r.json();
   }).then(function(r) {
     SKILLS = r
-    console.log(r);
-    skills=r;
-    console.log(skills)
     renderData(r)
   })
 };
 
 getRequest();
-let optionsArr = [];
-let submittedNames = []
 let list;
+
 function renderData(data) {
   let options = document.querySelector('#skills')
   for(let i = 0; i < data.length; i++) {
     list = document.createElement('option');
-    
     list.innerHTML = `${data[i].title}`;
     options.appendChild(list);
     list.classList.add('selected')
-    // document.querySelectorAll(".selected")[i].addEventListener("click", function() {
-    //   console.log('yep')
-    // })
-    console.log(list);
-    console.dir(document.querySelectorAll(".selected")[i])
-    optionsArr.push(`${data[i].title}`);
   };
-
-  console.log(optionsArr)
-  return list;
 };
-console.log(optionsArr)
-console.log(list);
 
 
 let displayLanguage = function (event) { 
-  event.preventDefault()
   let selectElement = document.querySelector('#skills');
   let output = selectElement.value;
   let experience = document.querySelector('#experience-years').value
@@ -177,32 +148,33 @@ let displayLanguage = function (event) {
   language.value = output;
   language.id = output;
   language.className = 'added-language';
+  const neededSkill = SKILLS.find(skill => skill.title == output)
+  const newSkill = {
+    id: neededSkill.id,
+    experience: Number(experience)
+  }
+  info.skills.push(newSkill);
+
   language.innerHTML = `
   <div class="language">${output}</div>
   <div class ="experience-text">Years of Experience: </div>
   <div class ="experience-years">${experience}</div>
   <img id =${output}-btn onclick="removeSelected(this);removeParent(this);"src="images/remove.png" alt="remove-btn">
   `;
+
   document.querySelector(".skills-form").appendChild(language);
   let selected = document.querySelectorAll(".selected") 
   selected.forEach((item => {
-    console.log(item);
     if(item.value===output) {
       item.hidden = true;
     }
-
-  }))
-
-  console.dir (selected)
-  console.log("LANGUAGE", language)
+  }));
 }
 
 document.querySelector(".add-language-btn").addEventListener("click", displayLanguage)
 
 function removeSelected (e) {
-  console.dir(e)
   const selectedLanguage = e.id.substring(0,e.id.length-4)
-  console.log(selectedLanguage);
   let languageBack = document.querySelectorAll(".selected")
 
   for (let i = 0; i < languageBack.length; i++) {
@@ -210,6 +182,16 @@ function removeSelected (e) {
       languageBack[i].hidden= false;
     }
   }
+  const neededSkill = SKILLS.find(skill => skill.title == selectedLanguage)
+
+  const filtered = info.skills.filter(item => {
+    if (item.id == neededSkill.id) {
+      return false
+    } else {
+      return true
+    }
+  })
+  info.skills = filtered
 };
 
 function removeParent(e) {
@@ -217,125 +199,65 @@ function removeParent(e) {
 }
 
 document.querySelector('form').addEventListener('submit', function(e) {
-  fetch('https://bootcamp-2022.devtest.ge/api/application', {
-  method: "POST",
-  headers: {'Content-Type': 'application/json'}, 
-  body: testdata
-}).then(res => {
-  console.log("Request complete! response:", res);
-  console.log(testdata)
-});
+  sendPostRequest(info);
   e.preventDefault();
 });
 
-
-
-// function sendRequest(data) {
-//   return fetch('https://bootcamp-2022.devtest.ge/api/application', {
-//     method: 'POST',
-//     // headers: {
-//     //    'Content-Type': 'application/x-www-form-urlencoded',
-//     // },
-//     body: data
-//   })
-//  .then(function(r) {
-//    console.log(data)
-//     return r.json();
-//   });
-//}
-
-
-let testdata = {
-  "token": '0f15932a-e354-4c54-bf22-a716438f519d',
-  "first_name": "Soso",
-  "last_name": "sosiashvili",
-  "email": "sosiashvili@gmail.como",
-  "phone": "+995514418181",
-  "skills": [
-    {
-      "id": 1,
-      "experience": 3
-    }
-  ],
-  "work_preference": "from_home",
-  "had_covid": true,
-  "had_covid_at": "2022-02-23",
-  "vaccinated": true,
-  "vaccinated_at": "2022-02-23",
-  "will_organize_devtalk": true,
-  "devtalk_topic": "dont know yet",
-  "something_special": "meh"
+function sendPostRequest(data) {
+  fetch('https://bootcamp-2022.devtest.ge/api/application', {
+  method: "POST",
+  headers: {'Content-Type': 'application/json'}, 
+  body: JSON.stringify(data)
+}).then(res => {
+  console.log("Request complete! response:", res);
+  console.log(data);
+});
 }
-
-
-// fetch('https://bootcamp-2022.devtest.ge/api/application', {
-//   method: "POST",
-//   headers: {'Content-Type': 'application/json'}, 
-//   body: testdata
-// }).then(res => {
-//   console.log("Request complete! response:", res);
-// });
-  //let testdata =
-  // {
-  //   token: '0f15932a-e354-4c54-bf22-a716438f519d',
-  //   first_name: "Soso",
-  //   last_name: "sosiashvili",
-  //   email: "sosiashvili@gmail.como",
-  //   phone: "",
-  //   skills: [
-  //     {
-  //       id: 1,
-  //       experience: 3
-  //     }
-  //   ],
-  //   work_preference": "from_home",
-  //   had_covid: true,
-  //   had_covid_at: "2022-02-23",
-  //   vaccinated": true,
-  //   vaccinated_at: "2022-02-23",
-  //   will_organize_devtalk": true,
-  //   devtalk_topic: "dont know yet",
-  //   something_special: "meh"
-  // }
-  
-  // getRequest1(TOKEN);
-  // function getRequest1() {
-  //   fetch('https://bootcamp-2022.devtest.ge/api/applications').then(function(r) {
-  //     return r.json();
-  //   }).then(function(r) {
-  //     console.log(r);
-
-  //   })
-  // };
 
 function yesnoCheckVaccinated() {
   if (document.getElementById('vaccinated').checked) {
     document.getElementById('vaccinate-date').style.display = 'block';
-    document.getElementById('when-vaccinated').style.display = 'block'; 
+    document.getElementById('when-vaccinated').style.display = 'block';
+    document.getElementById('when-vaccinated').attributes.required = "required";
+
   }else{
   document.getElementById('vaccinate-date').style.display = 'none';
   document.getElementById('when-vaccinated').style.display = 'none';
+  document.getElementById('when-vaccinated').attributes.required = "";
   }
 }
 
 function yesnoCheckCovid() {
-  if (document.getElementById('vaccinated').checked) {
-    document.getElementById('vaccinate-date').style.display = 'block';
-    document.getElementById('when-vaccinated').style.display = 'block'; 
+  if (document.getElementById('yes-covid').checked) {
+    document.getElementById('when-get-covid').style.display = 'block';
+    document.getElementById('contact-date').style.display = 'block'; 
+    document.getElementById('contact-date').required = "required";
   }else{
-  document.getElementById('vaccinate-date').style.display = 'none';
-  document.getElementById('when-vaccinated').style.display = 'none';
+  document.getElementById('when-get-covid').style.display = 'none';
+  document.getElementById('contact-date').style.display = 'none';
+  document.getElementById('contact-date').required = "";
+  }
+}
+function yesnoCheckdevTalk() {
+  if (document.getElementById('devtalks').checked) {
+    document.getElementById('devtalk_header').style.display = 'block';
+    document.getElementById('devtalk-text').style.display = 'block'; 
+    document.getElementById('devtalk-text').required = "required";
+  }else{
+  document.getElementById('devtalk_header').style.display = 'none';
+  document.getElementById('devtalk-text').style.display = 'none';
+  document.getElementById('devtalk-text').required = "";
   }
 }
 
+getRequest1();
+let receivedForm = null;
 function getRequest1() {
   fetch(`https://bootcamp-2022.devtest.ge/api/applications?token=${TOKEN}`).then(function(r) {
     return r.json();
   }).then(function(r) {
-    console.log(r);
-    skills=r;
-    console.log(skills)
+    receivedForm=r;
+    localStorage.setItem("FORM_INFO", JSON.stringify(r))
   })
 };
 
-getRequest1();

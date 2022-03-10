@@ -22,18 +22,17 @@
                     <h2 class="form-header"> Hey, Rocketeer, what <br> are your coordinates? </h2>
 
                     <input class="default-input for-test" type="text" name="first_name" 
-                        id="first_name" placeholder="First Name" minlength="2" pattern="[a-z]" oninput="setFieldInfo(this);"> 
-                    <span class="error-span">* first name is required</span>
+                        id="first_name" placeholder="First Name" minlength="2" oninput="setFieldInfo(this);"> 
+                    <span class="error-span"></span>
                     <input class="default-input for-test" type="text" name="last_name" 
                         id="last_name" placeholder="Last Name" minlength="2"  oninput="setFieldInfo(this);"> 
-                        <span class="error-span">* first name is required</span>
+                        <span class="error-span"></span>
                     <input class="default-input for-test" type="email" name="email" oninput="setFieldInfo(this);"
                         id="email" placeholder="E Mail" > 
-                        <span class="error-span">* first name is required</span>
+                        <span class="error-span"></span>
                     <input class="default-input for-test" type="tel" name="phone" oninput="setFieldInfo(this); "
                     id="phone" placeholder="+995 5__ __ __ __" pattern="[+9955]{5}[0-9]{2}[0-9]{6}"> 
-                    <span class="error-span">* first name is required</span>
-                    <input type="submit">
+                    <span class="error-span"></span>
                 </div>
 
                 <div class="form-group column-flex skills-form">
@@ -41,10 +40,10 @@
                     <select name="skills" id="skills" class="default-input" >
                         <option value="" disabled selected hidden>skills</option>  
                     </select>
-                    <span class="error-span">* first name is required</span>
-                    <input class="default-input" id="experience-years" type="number" name="experience" oninput="setFieldInfo(this); "
+                    <span class="error-span"></span>
+                    <input class="default-input" id="experience-years" type="number" name="experience"
                     id="experience" placeholder="Experience Duration in Years" minlength="1" > 
-                    <span class="error-span for-experience-error">first name is required</span>
+                    <span class="error-span for-experience-error"></span>
                     <div class="for-language-btn">
                     <button class="add-language-btn">Add Programming Language</button>
                     </div>
@@ -67,37 +66,37 @@
                             <input type="radio" id="hybrid" name="work_preference" value="hybrid" oninput="setFieldInfo(this);">
                             <label for="hybrid">Hybrid</label>
                         </div>
-                        <span class="error-span-radio">first name is required</span>
+                        <span class="error-span-radio"></span>
                         <h4 class="radio-quetion contact-header">Did you contact covid 19? :(</h4>
                         <div class="radio">
-                            <input type="radio" id="yes" name="had_covid" value="yes" oninput="setFieldInfo(this);">
-                            <label for="yes">Yes</label>
+                            <input type="radio" id="yes-covid" name="had_covid" value=true onclick="yesnoCheckCovid(this)" oninput="setFieldInfo(this);">
+                            <label for=false>Yes</label>
                         </div>
                         <div class="radio">
-                            <input type="radio" id="no" name="had_covid" value="no" oninput="setFieldInfo(this);">
-                            <label for="no">No</label>
+                            <input type="radio" id="no-covid" name="had_covid" value=false onclick="yesnoCheckCovid(this)" oninput="setFieldInfo(this);">
+                            <label for=false>No</label>
                         </div>
-                        <span class="error-span-radio">first name is </span>
-                        <h4 class="radio-quetion when-header">When?</h4>
+                        <span class="error-span-radio"></span>
+                        <h4 class="radio-quetion when-header" id="when-get-covid">When?</h4>
                         <div class="radio">
-                            <input type="date" id="contact-date" name="had_covid_at" placeholder="date" oninput="setFieldInfo(this);"   >
+                            <input class="default-input date-input" type="text" id="contact-date" name="had_covid_at" placeholder="date" oninput="setFieldInfo(this);" onfocus="(this.type='Date')" onblur="(this.type='text')"  >
                         </div>
-                        <span class="error-span-radio">first name is required</span>
+                        <span class="error-span-radio"></span>
                         <h4 class="radio-quetion been-vaccinated-header">Have you been vaccinated?</h4>
                         <div class="radio">
-                            <input type="radio" id="vaccinated" name="vaccinated" value="vaccinated" onclick="yesnoCheckVaccinated(this)" oninput="setFieldInfo(this);">
-                            <label for="vaccinated">Yes</label>
+                            <input type="radio" id="vaccinated" name="vaccinated" value="true" onclick="yesnoCheckVaccinated(this)" oninput="setFieldInfo(this);">
+                            <label for=true>Yes</label>
                         </div>
                         <div class="radio">
-                            <input type="radio" id="not-vaccinated" name="vaccinated" value="not-vaccinated" onclick="yesnoCheckVaccinated(this)"  oninput="setFieldInfo(this);">
-                            <label for="not-vaccinated">No</label>
+                            <input type="radio" id="not-vaccinated" name="vaccinated" value=false onclick="yesnoCheckVaccinated(this)"  oninput="setFieldInfo(this);">
+                            <label for=false>No</label>
                         </div>
-                        <span class="error-span-radio">first name is required</span>
+                        <span class="error-span-radio"></span>
                         <h4 class="radio-quetion when-vaccinated-header" id="when-vaccinated">When did you get your last covid vaccine?</h4>
                         <div class="radio">
-                            <input type="date" id="vaccinate-date" name="vaccinated_at" placeholder="date" oninput="setFieldInfo(this);">
+                            <input class="default-input date-input"type="text" id="vaccinate-date" name="vaccinated_at" placeholder="date" oninput="setFieldInfo(this);" onfocus="(this.type='Date')" onblur="(this.type='text')" >
                         </div>
-                        <span class="error-span-radio">first name is required</span>
+                        <span class="error-span-radio"></span>
                     </div>
 
                 </div>
@@ -107,20 +106,20 @@
 
                         <h4 class="radio-quetion devtalks-header">Would you attend Devtalks and maybe also organize your own?</h4>
                         <div class="radio">
-                            <input type="radio" id="devtalks" name="will_organize_devtalk" value="yes-devtalks" oninput="setFieldInfo(this);">
-                            <label for="yes-devtalks">Yes</label>
+                            <input type="radio" id="devtalks" name="will_organize_devtalk" onclick="yesnoCheckdevTalk(this)" value=true oninput="setFieldInfo(this);">
+                            <label for=true>Yes</label>
                         </div>
                         <div class="radio">
-                            <input type="radio" id="no-devtalks" name="will_organize_devtalk" value="no-devtalks" oninput="setFieldInfo(this);">
-                            <label for="no-devtalks">No</label>
+                            <input type="radio" id="no-devtalks" name="will_organize_devtalk" onclick="yesnoCheckdevTalk(this)" value=false oninput="setFieldInfo(this);">
+                            <label for=false>No</label>
                         </div>
-                        <span class="error-span-radio">first name is required</span>
-                        <h4 class="radio-quetion topic-header">What would you speak about at Devtalk?</h4>
-                        <input type="textarea" class="topic-text" name="devtalk_topic" placeholder="I would ..." oninput="setFieldInfo(this);">
-                        <span class="error-span-radio">first name is required</span>
+                        <span class="error-span-radio"></span>
+                        <h4 class="radio-quetion topic-header" id="devtalk_header">What would you speak about at Devtalk?</h4>
+                        <input type="textarea" class="topic-text" id="devtalk-text" name="devtalk_topic" placeholder="I would ..." oninput="setFieldInfo(this);">
+                        <span class="error-span-radio"></span>
                         <h4 class="radio-quetion special-header">Tell us something special</h4>
                         <input type="textarea" class="something_special" name="something_special" placeholder="I ..." oninput="setFieldInfo(this);">
-                        <span class="error-span-radio">first name is required</span>
+                        <span class="error-span-radio"></span>
                     </div>
                 </div>
                 <div class="form-group column-flex submit-page">
@@ -145,7 +144,6 @@
                 they got a question about a famous American author and screenwriter Ray Bradbury. 
                 Albeit, our CEO Gaga Darsalia forgot the exact name and he answered Ray Redberry. 
                 And at that moment, a name for a yet to be born company was inspired - Redberry 😇</p>
-                <button class="btno"></button>
         </article>
         <article class="right-side column-flex about-redberry">
             <h2 class="form-header"> A bit about our battles </h2>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rowdies&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <title>redberry applications</title>
+</head>
+<body>
+    <div class="submitted-container column-flex">
+        <h2 class="submitted-header">Submitted Applications</h2>
+        <!-- <div class="application-container">
+            <div class="dropdown row-flex">
+                <div class="for-index">1</div>
+                <div class="for-arrow"> <img src="images/donw.svg" alt="donw-arrow"></div>
+            </div>
+            
+            <div class="application row-flex">
+                <div class="personal-information">
+                    <h4 class="application-header personal-info-header" >personal information</h4>
+                    <div class="row-flex for-fields">
+                        <div class="field">First Name</div> <div class="right-field">Eren</div>
+                    </div>
+                    <div class="row-flex for-fields">
+                        <div class="field">Last Name</div> <div class="right-field">Yeager</div>
+                    </div>
+                    <div class="row-flex for-fields">
+                        <div class="field">E mail</div> <div class="right-field">eren@wings-of-freedom.ml</div>
+                    </div>
+                    <div class="row-flex for-fields">
+                        <div class="field">Phone</div> <div class="right-field">+995 591 93 50 80</div>
+                    </div>
+                </div>
+                 <div class="skillset">
+                    <h4 class="application-header">skillset</h4>
+                    <div class="row-flex for-fields">
+                        <div class="field">php</div> <div class="right-field">years of experience: 3</div>
+                    </div>
+                    <div class="row-flex for-fields">
+                        <div class="field">php</div> <div class="right-field">years of experience: 3</div>
+                    </div>
+                    <div class="row-flex for-fields">
+                        <div class="field">php</div> <div class="right-field">years of experience: 3</div>
+                    </div>
+                    <div class="row-flex for-fields">
+                        <div class="field">php</div> <div class="right-field">years of experience: 3</div>
+                    </div>
+                    <div class="row-flex for-fields">
+                        <div class="field">php</div> <div class="right-field">years of experience: 3</div>
+                    </div>
+                </div> 
+                <div class="covid-situation column-flex">
+                    <h4 class="application-header">Covid Situation</h4>
+
+                    <h5 class="sub-header">how would you prefer to work?</h5>
+                    <div class="option">
+                        <input type="radio" id="from_Office/submited" name="work_preference/submited" readonly>
+                        <label for="from_Office/submited">From Sairme Office</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="from_home/submited" name="work_preference/submited" readonly>
+                        <label for="from_home/submited">From Home</label>
+                    </div>
+                    <div class="option last-option">
+                        <input type="radio" id="hybrid/submited" name="work_preference/submited" readonly>
+                        <label for="hybrid/submited">Hybrid</label>
+                    </div>
+
+                    <h5 class="sub-header">Did you have covid 19?</h5>
+                    <div class="option">
+                        <input type="radio" id="yes/submited" name="had_covid/submited" value="yes/submited" readonly>
+                        <label for="yes/submited">Yes</label>
+                    </div>
+                    <div class="option last-option">
+                        <input type="radio" id="no/submited" name="had_covid/submited" value="no/submited" readonly>
+                        <label for="no/submited">No</label>
+                    </div>
+
+                    <h5 class="sub-header"> Did you have covid 19?</h5>
+                    <input type="date" class="date-submitted" id="contact-datesubmited" name="had_covid_atsubmited" placeholder="date" readonly>
+                    
+                    <h5 class="sub-header">Have you been vaccinated?</h5>
+                    <div class="option">
+                        <input type="radio" id="vaccinated/submited" name="vaccinated/submited" value="vaccinated/submited" readonly>
+                        <label for="vaccinated/submited">Yes</label>
+                    </div>
+                    <div class="option last-option">
+                        <input type="radio" id="not-vaccinated/submited" name="vaccinated/submited" value="not-vaccinated/submited" readonly>
+                        <label for="not-vaccinated/submited">No</label>
+                    </div>
+                    <h5 class="sub-header">When did you get covid vaccine?</h5>
+                    <input type="date" class="date-submitted" id="vaccinate-date/submited" name="vaccinated_at/submited" placeholder="date" readonly>
+                </div>
+                 <div class="insight">
+                    <h4 class="application-header">Insights</h4>
+                    <h5 class="sub-header">Would you attend Devtalks and maybe also organize your own?</h5>
+                    <div class="option">
+                        <input type="radio" id="devtalks/submited" name="will_organize_devtalk/submited" value="yes-devtalks/submited" readonly>
+                        <label for="yes-devtalks/submited">Yes</label>
+                    </div>
+                    <div class="option last-insight-option">
+                        <input type="radio" id="no-devtalks/submited" name="will_organize_devtalk/submited" value="no-devtalks/submited" readonly>
+                        <label for="no-devtalks/submited">No</label>
+                    </div>
+
+                    <h5 class="sub-header">What would you speak about at Devtalk?</h5>
+                    <input class="textarea-place" type="textarea" class="topic-text/submited" name="devtalk_topic/submited" value="I would speak about subject of how to center a div" readonly>
+               
+                    <h5 class="sub-header">Tell us somthing special</h5>
+                    <input class="textarea-place" type="textarea" class="something_special/submited" name="something_special/submited" value="I can deBUG anything!" readonly>
+                </div>
+            </div> -->
+        </div>
+    </div>
+    <script src="app.js"></script>
+    <script src="submitted.js"></script>
+</body>
+
+</html>
