@@ -22,16 +22,16 @@
                     <h2 class="form-header"> Hey, Rocketeer, what <br> are your coordinates? </h2>
 
                     <input class="default-input for-test" type="text" name="first_name" 
-                        id="first_name" placeholder="First Name" minlength="2" oninput="setFieldInfo(this);"> 
+                        id="first_name" placeholder="First Name" minlength="2" pattern="^[a-zA-Z]+$" oninput="setFieldInfo(this);" onblur="nextStepChekValidity(this)" required autofocus> 
                     <span class="error-span"></span>
                     <input class="default-input for-test" type="text" name="last_name" 
-                        id="last_name" placeholder="Last Name" minlength="2"  oninput="setFieldInfo(this);"> 
+                        id="last_name" placeholder="Last Name" minlength="2"  pattern="^[a-zA-Z]+$" onblur="nextStepChekValidity(this);" oninput="setFieldInfo(this);" required autofocus> 
                         <span class="error-span"></span>
-                    <input class="default-input for-test" type="email" name="email" oninput="setFieldInfo(this);"
-                        id="email" placeholder="E Mail" > 
+                    <input class="default-input for-test" type="email" name="email" oninput="setFieldInfo(this);"  onblur="nextStepChekValidity(this)" required autofocus
+                        id="email" placeholder="E Mail"> 
                         <span class="error-span"></span>
-                    <input class="default-input for-test" type="tel" name="phone" oninput="setFieldInfo(this); "
-                    id="phone" placeholder="+995 5__ __ __ __" pattern="[+9955]{5}[0-9]{2}[0-9]{6}"> 
+                    <input class="default-input for-test" type="tel" name="phone" oninput="setFieldInfo(this);" 
+                    id="phone" placeholder="+995 5__ __ __ __" pattern="[+9955]{5}[0-9]{2}[0-9]{6}" onblur="nextStepChekValidity(this)" required autofocus> 
                     <span class="error-span"></span>
                 </div>
 

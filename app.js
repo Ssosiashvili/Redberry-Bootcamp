@@ -1,7 +1,7 @@
 'use strict';
 
 const TOKEN = '0b9f51f8-c55d-4391-80c6-9fb22bb5e9aa'
-var SKILLS = {}
+let SKILLS = {}
 
 const info = {token: TOKEN, skills: [
 
@@ -13,18 +13,15 @@ function setFieldInfo(e) {
   }else{
   info[e.name] = e.value
   }
-  console.log(info)
+  //console.log(info)
 }
 
-function setSkillInfo(e) {
 
-}
-
-const phoneInputField = document.querySelector("#phone");
-const phoneInput = window.intlTelInput(phoneInputField, {
-  utilsScript:
-    "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
-});
+// const phoneInputField = document.querySelector("#phone");
+// const phoneInput = window.intlTelInput(phoneInputField, {
+//   utilsScript:
+//     "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+// });
 
 
 const formPages = document.querySelectorAll('.form-group');
@@ -36,7 +33,7 @@ const goBackBtn = document.querySelector('#go-back');
 
 let activeIndex = 0;
 
-nextBtn.addEventListener('click', showNextPage);
+//nextBtn.addEventListener('click', showNextPage);
 prevBtn.addEventListener('click', showPrevPage);
 goBackBtn.addEventListener('click', backFromLast);
 
@@ -97,23 +94,28 @@ function showLastPage(page) {
 
 //nextBtn.addEventListener("click", nextStepChekValidity)
 
-function nextStepChekValidity() {
-  let input = document.querySelectorAll(".for-test");
-  for (let i=0; i< input.length; i++) {
-    console.log(input[i].value)
-    if(input[i].value =="") {
-      input[i].nextElementSibling.innerHTML = "this field is required";
-      console.log("this field is required")
-    }else if(input[i].validity.tooShort) {
-      input[i].nextElementSibling.innerHTML = "at least 2 symbols"
-      console.log("at least 2 symbols");
-    }else if(input[i].validity.typeMismatch) {
-      input[i].nextElementSibling.innerHTML = "input email adress"
-      console.log("at least 2 symbols");
-    } else if(input[i].validity.patternMismatch) {
-      input[i].nextElementSibling.innerHTML = "use correct pattern"
+function nextStepChekValidity(input) {
+  // let input = document.querySelectorAll(".for-test");
+  // for (let i=0; i< input.length; i++) {
+  //   console.log(input[i].value)
+    console.log("shemovida")
+    if(input.value =="") {
+      input.nextElementSibling.innerHTML = "* this field is required";
+      nextBtn.removeEventListener('click', showNextPage)
+    }else if(input.validity.tooShort) {
+      input.nextElementSibling.innerHTML = "* use at least 2 symbols"
+      nextBtn.removeEventListener('click', showNextPage)
+    }else if(input.validity.typeMismatch) {
+      input.nextElementSibling.innerHTML = "* input correct email adress"
+      nextBtn.removeEventListener('click', showNextPage)
+    } else if(input.validity.patternMismatch) {
+      input.nextElementSibling.innerHTML = "* input does not match required pattern"
+      nextBtn.removeEventListener('click', showNextPage)
+    }else {
+      input.nextElementSibling.innerHTML ="";
+      nextBtn.addEventListener('click', showNextPage)
     }
-  }
+  // }
 }
 
 let skills = [];
@@ -250,9 +252,11 @@ function yesnoCheckdevTalk() {
   }
 }
 
-getRequest1();
+
+document.querySelector('.sumbitted').addEventListener("click", getRequestApplication);
+
 let receivedForm = null;
-function getRequest1() {
+function getRequestApplication() {
   fetch(`https://bootcamp-2022.devtest.ge/api/applications?token=${TOKEN}`).then(function(r) {
     return r.json();
   }).then(function(r) {

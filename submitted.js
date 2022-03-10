@@ -21,7 +21,7 @@ function renderSubmittedApplications(){
         createdDiv.classList.add('application-container');
         //console.log(data[i].skills[i]?.id, data[i].skills[i]?.experience);
         skillsArr.push(data[i].skills);
-        console.log(skillsArr)
+        console.log(...[skillsArr])
         createdDiv.innerHTML=`                
         <div class="dropdown row-flex">
             <div class="for-index">${i+1}</div>
