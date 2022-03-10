@@ -117,13 +117,15 @@ function renderSubmittedApplications(){
      let skillset = document.querySelectorAll('.skillset');
     for (let i=0; i < data.length; i++ ) {
         let createdSkillsDiv = document.createElement('div');
-
-    skillset[i]?.appendChild(createdSkillsDiv);
-
+        createdSkillsDiv.classList.add('row-flex', 'for-fields');
+        skillset[i]?.appendChild(createdSkillsDiv);
+        
         for(let x = 0; x < data[i].skills.length; x++){
-            console.log("id", data[i].slills)
-             console.log("length",data[i].skills.length)
-            // console.log(data[i].skills[x]?.id,data[i].skills[x]?.experience)
+            console.log("id", data[i].skills[x].id, data[i].skills[x].experience)
+            let createdSkillsSubDiv = document.createElement('div');
+            
+            createdSkillsSubDiv.innerHTML = `<div class="field">${data[i].skills[x].id}</div> <div class="right-field">years of experience: ${data[i].skills[x].experience}</div>`
+            createdSkillsDiv.appendChild(createdSkillsSubDiv);
         }
     }
     //<div class="field">${data[i].skills.id}</div> <div class="right-field">years of experience: ${data[i].skills.experience}</div>
