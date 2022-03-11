@@ -402,13 +402,14 @@ input:not(:placeholder-shown):invalid {
     margin-right: 28px;
     font-style: italic;
 }
-.for-fields{
-    align-items: center;
-}
+/* .for-fields{
+    max-height:271px;
+    overflow-y:scroll;
+} */
 .skillset {
     margin-top: 36px;
-    height: 271px;
-    overflow:scroll;
+    /* min-height: 271px; */
+    width: 447px;
 }
 .covid-situation {
     margin-top: 90px;
@@ -434,7 +435,7 @@ input:not(:placeholder-shown):invalid {
 }
 .date-submitted {
     width: 272px !important;
-    height: 54px !important;
+    height: 36px !important;
     overflow: hidden;
     padding: 0;
     padding-right: 20px;  
@@ -447,6 +448,7 @@ input:not(:placeholder-shown):invalid {
     -webkit-appearance: none;
     -moz-appearance: none;
     margin-bottom: 77px;
+    padding-top: 18px;
 }
 .insight {
     margin-top: 90px;
@@ -464,4 +466,15 @@ input:not(:placeholder-shown):invalid {
     padding-left: 20px;
     margin-bottom: 37px;
     border: 1px solid #525557;
+}
+.thank-you {
+    font-family: 'Rowdies', cursive;
+    font-size: 64px;
+    color: #FE3B1F;
+    width: 1066px;
+    height: 191px;
+    margin: auto auto;
+    font-weight: 400;
+    text-align: center;
+    margin-top:394px;
 }

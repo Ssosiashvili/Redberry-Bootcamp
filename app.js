@@ -196,6 +196,8 @@ function removeParent(e) {
 document.querySelector('form').addEventListener('submit', function(e) {
   sendPostRequest(info);
   e.preventDefault();
+  // thanksForJoining();
+  //backLandingPage();
 });
 
 function sendPostRequest(data) {
@@ -204,11 +206,17 @@ function sendPostRequest(data) {
   headers: {'Content-Type': 'application/json'}, 
   body: JSON.stringify(data)
 }).then(res => {
-  console.log("Request complete! response:", res);
-  console.log(data);
+  console.log("Request complete! response:", res);  
 });
 }
 
+// function thanksForJoining() {
+//   window.location.replace("thanks.html");
+// }
+// function backLandingPage() {
+//   window.location.href = "index.html";
+//   location(reload);
+// }
 function yesnoCheckVaccinated() {
   if (document.getElementById('vaccinated').checked) {
     document.getElementById('vaccinate-date').style.display = 'block';

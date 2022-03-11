@@ -1,18 +1,8 @@
-const form = localStorage.getItem("FORM_INFO")
+const form = localStorage.getItem("FORM_INFO");
+const data = JSON.parse(form);
 
-console.log(form)
-// let languages = {
-//     html = 1,
-//     css = 2,
-//     php = 3,
-//     laravel = 4,
-//     react = 5,
-//     vue = 6,
-//     svelte = 7,
-//     angular =8,
 
-// }
-const data = JSON.parse(form)
+
 let skillsArr=[];
 renderSubmittedApplications();
 function renderSubmittedApplications(){
@@ -20,9 +10,7 @@ function renderSubmittedApplications(){
         let createdDiv = document.createElement('div');
         document.querySelector('.submitted-container').appendChild(createdDiv);
         createdDiv.classList.add('application-container');
-        //console.log(data[i].skills[i]?.id, data[i].skills[i]?.experience);
         skillsArr.push(data[i].skills);
-        console.log(...[skillsArr])
         createdDiv.innerHTML=`                
         <div class="dropdown row-flex">
             <div class="for-index">${i+1}</div>
@@ -45,11 +33,8 @@ function renderSubmittedApplications(){
                     <div class="field">Phone</div> <div class="right-field">${data[i].phone}</div>
                 </div>
             </div>
-            <div class="skillset">
+            <div class="skillset column-flex">
                 <h4 class="application-header">skillset</h4>
-                <div class="row-flex for-fields">
-                    <div class="field">php</div> <div class="right-field">years of experience: 3</div>
-                </div>
             </div> 
             <div class="covid-situation column-flex">
                 <h4 class="application-header">Covid Situation</h4>
@@ -78,8 +63,9 @@ function renderSubmittedApplications(){
                     <label for="no/submited">No</label>
                 </div>
 
-                <h5 class="sub-header"> Did you have covid 19?</h5>
-                <input type="date" class="date-submitted" id="contact-datesubmited" name="had_covid_atsubmited" placeholder="date" readonly>
+                <h5 class="sub-header"> When did you have covid 19?</h5>
+                <div class="date-submitted" id="contact-datesubmited"> ${data[i].had_covid_at}</div>
+                
                 
                 <h5 class="sub-header">Have you been vaccinated?</h5>
                 <div class="option">
@@ -91,7 +77,7 @@ function renderSubmittedApplications(){
                     <label for="not-vaccinated/submited">No</label>
                 </div>
                 <h5 class="sub-header">When did you get covid vaccine?</h5>
-                <input type="date" class="date-submitted" id="vaccinate-date/submited" name="vaccinated_at/submited" placeholder="date" readonly>
+                <div class="date-submitted" id="vaccinate-date/submited"> ${data[i].vaccinated_at}</div>
             </div>
             <div class="insight">
                 <h4 class="application-header">Insights</h4>
@@ -106,26 +92,56 @@ function renderSubmittedApplications(){
                 </div>
 
                 <h5 class="sub-header">What would you speak about at Devtalk?</h5>
-                <input class="textarea-place" type="textarea" class="topic-text/submited" name="devtalk_topic/submited" value="I would speak about subject of how to center a div" readonly>
+                <input class="textarea-place" type="textarea" class="topic-text/submited" name="devtalk_topic/submited" value="${data[i].devtalk_topic}"; readonly>
         
                 <h5 class="sub-header">Tell us somthing special</h5>
-                <input class="textarea-place" type="textarea" class="something_special/submited" name="something_special/submited" value="I can deBUG anything!" readonly>
+                <input class="textarea-place" type="textarea" class="something_special/submited" name="something_special/submited" value="${data[i].something_special}"; readonly>
             </div>
         </div>
         `;
+    }   
+    
+    for(let i = 0; i < skillsArr.length; i++){
+        for(let x = 0; x < skillsArr[i].length; x++){
+            if(skillsArr[i][x].id === 1){
+                skillsArr[i][x].value = "HTML";
+            } else
+            if(skillsArr[i][x].id == 2){
+                skillsArr[i][x].value = "CSS";
+            }else
+            if(skillsArr[i][x].id == 3){
+                skillsArr[i][x].value = "PHP";
+            }else
+            if(skillsArr[i][x].id == 4){
+                skillsArr[i][x].value = "Laravel";
+            }else
+            if(skillsArr[i][x].id == 5){
+                skillsArr[i][x].value = "React.JS";
+            }else
+            if(skillsArr[i][x].id == 6){
+                skillsArr[i][x].value = "Vue.JS";
+            }else
+            if(skillsArr[i][x].id == 7){
+                skillsArr[i][x].value = "Svelte";
+            }else
+            if(skillsArr[i][x].id == 8){
+                skillsArr[i][x].value = "Angular";
+            }
+        }    
     }
-     let skillset = document.querySelectorAll('.skillset');
+
+    let createdSkillsDiv;
+    let skillset = document.querySelectorAll('.skillset');
     for (let i=0; i < data.length; i++ ) {
-        let createdSkillsDiv = document.createElement('div');
-        createdSkillsDiv.classList.add('row-flex', 'for-fields');
+        createdSkillsDiv = document.createElement('div');
+        createdSkillsDiv.classList.add('column-flex', 'for-fields');
         skillset[i]?.appendChild(createdSkillsDiv);
-        
+
         for(let x = 0; x < data[i].skills.length; x++){
-            console.log("id", data[i].skills[x].id, data[i].skills[x].experience)
-            let createdSkillsSubDiv = document.createElement('div');
-            
-            createdSkillsSubDiv.innerHTML = `<div class="field">${data[i].skills[x].id}</div> <div class="right-field">years of experience: ${data[i].skills[x].experience}</div>`
-            createdSkillsDiv.appendChild(createdSkillsSubDiv);
+            createdSkillsSubDiv = document.createElement('div');
+            createdSkillsSubDiv.classList.add('row-flex');
+            createdSkillsSubDiv.innerHTML =`<div class="field">${skillsArr[i][x].value}</div> <div class="right-field">years of experience: ${data[i].skills[x].experience}</div>` 
+            createdSkillsDiv.appendChild(createdSkillsSubDiv)
         }
     }
     //<div class="field">${data[i].skills.id}</div> <div class="right-field">years of experience: ${data[i].skills.experience}</div>
